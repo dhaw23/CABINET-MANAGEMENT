@@ -1,13 +1,17 @@
 package com.twd.SpringSecurityJWT.repository;
 
-public interface AppointmentReppo {
-    public Appointment getAppointmentById(int id) throws SQLException;
-    public ArrayList<Appointment> getAllAppointmentById(int id_patient) throws SQLException;
-    public boolean deleteAppointmentById(int id) throws SQLException;
+import com.twd.SpringSecurityJWT.entity.Appointment;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
-    public boolean takeAppointment(Appointment appointment) throws SQLException;
+import java.util.List;
 
-    public ArrayList<Appointment> ListeAppointmentNF() throws SQLException;
-    public int SupprimerAppointmentPatient(int id_p) throws SQLException;
-    public ArrayList<Appointment> ListeAppointmentF() throws SQLException;
+@Repository
+public interface AppointmentRepo  extends JpaRepository<Long,Appointment> {
+
+    @Query("select u from  Appointment  u  where u.user.id= :id_appointment")
+    List<Appointment> findByappointmentAndPatient(@Param("id_appointment") Long id) ;
+
 }
