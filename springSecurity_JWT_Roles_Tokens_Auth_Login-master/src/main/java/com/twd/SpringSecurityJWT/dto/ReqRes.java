@@ -25,5 +25,14 @@ public class ReqRes {
     private String role;
     private String password;
     private List<Product> products;
+
+    public OurUsers getOurUsers() {
+        return ourUsers;
+    }
+
+    public void setOurUsers(OurUsers ourUsers) {
+        this.ourUsers = ourUsers;
+    }
+
     private OurUsers ourUsers;
 }
