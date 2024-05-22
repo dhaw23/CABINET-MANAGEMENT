@@ -36,6 +36,7 @@ public class SecurityConfig {
                         .requestMatchers("/user/**").permitAll()
                         .requestMatchers("/adminuser/**").permitAll()
                         .requestMatchers("/appointment/**").permitAll()
+                        .requestMatchers("/medicalfile/**").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider()).addFilterBefore(

@@ -16,6 +16,9 @@ public interface OurUserRepo extends JpaRepository<OurUsers, Integer> {
 
     @Query("SELECT u FROM OurUsers u WHERE u.role LIKE %:role%")
     List<OurUsers> findUsersWithRole(@Param("role") String role);
+    @Query(value = "SELECT * FROM ourusers o JOIN appointment a ON o.id = a.id_patient WHERE a.id_doctor = :doctorId", nativeQuery = true)
+    List<OurUsers> findpatientByDoctorId(@Param("doctorId") Long doctorId);
+
 }
 
 

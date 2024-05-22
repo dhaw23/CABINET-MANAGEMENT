@@ -42,6 +42,9 @@ public class OurUserDetailsService implements UserDetailsService {
 
         return ourUserRepo.findUsersWithRole("PATIENT");
     }
+    public List<OurUsers> getpatientByDoctorId(Long doctorId) {
+        return ourUserRepo.findpatientByDoctorId(doctorId);
+    }
 
     public void deleteuser(Integer id) {
 

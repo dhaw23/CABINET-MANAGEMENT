@@ -30,6 +30,10 @@ public class OurUsersController {
         return ResponseEntity.ok( ourUserDetailsService.getallpatients());
 
     }
+    @GetMapping("/medecin/{doctorId}")
+    public ResponseEntity <List<OurUsers>> getPatientsByDoctorId(@PathVariable Long doctorId) {
+        return ResponseEntity.ok(ourUserDetailsService.getpatientByDoctorId(doctorId));
+    }
 
 
     @PostMapping("/updatepassword/{id}")
